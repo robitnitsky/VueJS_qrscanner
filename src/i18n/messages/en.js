@@ -9,6 +9,10 @@ export default {
     result: {
       heading: 'Scan result',
       resetBtn: 'Reset'
+    },
+    login: {
+      heading: 'Login',
+      loginBtn: 'Login'
     }
   }
 }
