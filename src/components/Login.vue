@@ -1,9 +1,11 @@
 <template>
   <div>
     <h1>{{ $t('login.heading') }}</h1>
-    <input type="text" v-model="login" placeholder="Login">
-    <input type="text" v-model="password" placeholder="Password">
-    <button @click.prevent="onLogin">{{ $t('login.loginBtn') }}</button>
+      <form @submit.prevent="onLogin">
+      <input type="text" v-model="login" placeholder="Login">
+      <input type="password" v-model="password" placeholder="Password">
+      <button type="submit">{{ $t('login.loginBtn') }}</button>
+    </form>
   </div>
 </template>
 
@@ -21,7 +23,12 @@ export default {
       this.$store.dispatch('auth/login', {
         login: this.login,
         password: this.password
+      }).then(() => {
+        this.goToScan()
       })
+    },
+    goToScan () {
+      this.$router.push({path: '/scan'})
     }
   }
 }
